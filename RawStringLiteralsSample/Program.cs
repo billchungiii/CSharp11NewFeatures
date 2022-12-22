@@ -26,6 +26,17 @@
 
             string longString4 = $"長字串{Environment.NewLine}換行";
             Console.WriteLine(longString4);
+
+            int age = 10;
+            string name = "小明";
+            string description1 = $"""{name} 的年齡是 {age}。""";
+            Console.WriteLine(description1);
+            string description2 = $$"""{{{name}} 的年齡是 {{age}}}。""";
+            Console.WriteLine(description2);
+            string description3 = $$$"""{{{{{name}}} 的年齡是 {{{age}}}}}。""";
+            Console.WriteLine(description3);
+            string description4 = $$$"""{{{{{name}}}}} 的年齡是 {{{{{age}}}}}。""";
+            Console.WriteLine(description4);
         }
     }
 }
