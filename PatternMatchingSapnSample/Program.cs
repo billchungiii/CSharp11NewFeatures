@@ -4,20 +4,30 @@
     {
         static void Main(string[] args)
         {
-            ReadOnlySpan<char> chars1 = new ReadOnlySpan<char>(new char[] { '1', '2', '3' });
-            Console.WriteLine(Is123(chars1));
-            Span<char> chars2 = new Span<char>(new char[] { 'A' });
-            Console.WriteLine (IsABC (chars2));
+            var list = new List<string>
+           {
+                  "45600001",
+                  "45600002",
+                  "45700003",
+                  "45600004",
+                  "45700005",
+           };
+
+            foreach (var item in list)
+            {
+                Console.WriteLine($"by span {item} is  {Is456BySpan(item)}");
+                Console.WriteLine($"by string {item} is  {Is456ByString(item)}");
+            };
         }
 
-        static bool Is123(ReadOnlySpan<char> s)
+        static bool Is456BySpan(ReadOnlySpan<char> source)
         {
-            return s is "123";
+            return source.Slice(0, 3) is "456";
         }
 
-        static bool IsABC(Span<char> s)
+        static bool Is456ByString(string source)
         {
-            return s switch { "ABC" => true, _ => false };
+            return source.Substring(0, 3) is "456";
         }
     }
 }
