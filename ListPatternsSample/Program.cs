@@ -14,6 +14,30 @@
                 [..] => "D"
             };
             Console.WriteLine(result);
+
+            List<int> list = new List<int>();
+            recursive(array, list);
+            Console.Write(string.Join(",", list));
+
+            void recursive(int[] source, List<int> r)
+            {
+                switch (source)
+                {
+                    case [var x, var y, .. var z]:
+                        AddResult(z, r, x, y);
+                        break;
+                    case [var x, .. var z]:
+                        AddResult(z, r, x);
+                        break;
+                    case []: return;
+                };
+            }
+
+            void AddResult(int[] source, List<int> r, int a, int b = 0)
+            {
+                r.Add(a + b);
+                recursive(source, r);
+            }
         }
     }
 }
